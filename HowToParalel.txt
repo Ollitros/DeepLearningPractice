@@ -1,0 +1,8 @@
+1) Install Nvidia Cuda (Prefer 9.0 becaise of the version of TFlow)
+2) Install Nvidia Cudnn ( For Cuda 9.0)
+3) All mistakes caused by incapabilities with different version of Cuda, Cudnn or TF
+4) Install TensorFlow-g (graphical library for TF)
+5) Use  this code:
+	 with tf.device('/gpu:0'):
+		pass
+6) Also after setups you should reload your PC - i had this problem with PyCharm
