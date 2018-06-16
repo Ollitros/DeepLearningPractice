@@ -103,31 +103,12 @@ def how_transfer_works():
 if __name__ == '__main__':
     # how_transfer_works()
 
-    # Download data from urls
-    def download_from_url():
 
-        def downloader(image_url, myPath):
-            file_name = random.randrange(1, 10000)
-            full_file_name = str(file_name) + '.jpg'
-            fullfilename = os.path.join(myPath, full_file_name)
-            urllib.request.urlretrieve(image_url, fullfilename)
-
-            with open('data/children_path.txt', 'a') as file:
-                name = str(fullfilename) + '\n'
-                file.write(name)
-
-        urls = list()
-        with open("data/child_urls.txt", "r") as file:
-            urls = file.readlines()
-
-        myPath = 'data/child_images/'
-        for image_url in urls:
-            downloader(image_url, myPath)
 
     # Prepare data for training
     names = list()
     x_train = np.array([])
-    with open("data/children_path.txt", "r") as file:
+    with open("data/children/children_path.txt", "r") as file:
         names = file.readlines()
 
     x_train = list()
@@ -151,7 +132,7 @@ if __name__ == '__main__':
     print(vgg16.summary())
 
     # Transform images
-    img_path = 'data/child.jpg'
+    img_path = 'data/children/child.jpg'
     img = image.load_img(img_path, target_size=(224, 224))
     x = image.img_to_array(img)
 
@@ -191,6 +172,7 @@ if __name__ == '__main__':
         prediction1 = final_model.predict(test1)
         prediction2 = final_model.predict(test2)
         print(prediction1, prediction2)
+
     # input_new = layers.Input(shape=(arr.shape), name='image_input')
     # output_vgg16 = vgg16(input_new)
     # x = Dense(256, activation='relu', name='fc1')(output_vgg16)
