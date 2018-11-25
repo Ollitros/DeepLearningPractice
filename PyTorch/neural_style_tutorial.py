@@ -537,7 +537,7 @@ def get_input_optimizer(input_img):
 #
 
 def run_style_transfer(cnn, normalization_mean, normalization_std,
-                       content_img, style_img, input_img, num_steps=750,
+                       content_img, style_img, input_img, num_steps=2000,
                        style_weight=1000000, content_weight=1):
     """Run the style transfer."""
     print('Building the style transfer model..')
