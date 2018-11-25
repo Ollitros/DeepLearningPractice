@@ -62,7 +62,7 @@ x_test = tf.constant(np.reshape(x_test, [-1, 28, 28, 1]), dtype=tf.float32)
 
 
 model = Model(input_shape=x_train.shape[1], output_shape=10)
-model.fit(x_train, y_train, epochs=10, batch_size=500)
+model.fit(x_train, y_train, epochs=10, batch_size=1000)
 
 prediction = model.predict(x_test)
 print(y_test[0:3])
