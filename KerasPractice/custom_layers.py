@@ -28,8 +28,8 @@ class MyDenseLayer(tf.keras.layers.Layer):
     def build(self, input_shape):
         self.kernel = self.add_variable("kernel", shape=[input_shape[-1].value, self.num_outputs])
 
-    def call(self, input):
-        return tf.matmul(input, self.kernel)
+    def call(self, inputs):
+        return tf.matmul(inputs, self.kernel)
 
 # Create convolve model
 
