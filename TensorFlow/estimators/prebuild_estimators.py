@@ -21,8 +21,7 @@ from TensorFlow.estimators import iris_data
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch_size', default=100, type=int, help='batch size')
-parser.add_argument('--train_steps', default=10, type=int,
-                    help='number of training steps')
+parser.add_argument('--train_steps', default=10, type=int, help='number of training steps')
 
 
 def main(argv):
@@ -42,7 +41,8 @@ def main(argv):
         # Two hidden layers of 10 nodes each.
         hidden_units=[10, 10],
         # The model must choose between 3 classes.
-        n_classes=3)
+        n_classes=3,
+        model_dir='data/models')
 
     # Train the Model.
     classifier.train(
