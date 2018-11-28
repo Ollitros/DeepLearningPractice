@@ -20,19 +20,16 @@ else:
     y_test = tf.keras.utils.to_categorical(y_test, num_classes)
 
 
-class MyDenseLayer(tf.keras.layers.Layer):
-    def __init__(self, num_outputs):
-        super(MyDenseLayer, self).__init__()
-        self.num_outputs = num_outputs
+###
+# python -m tensorboard.main --logdir=[PATH_TO_LOGDIR]
+# [PATH_TO_LOGDIR] - without ' or ", + add '/'
+# FOR EXAMPLE: "python -m tensorboard.main --logdir=logs/"
+# where 'logs/' - is your directory where your log file placed from writer or smth else
+###
 
-    def build(self, input_shape):
-        self.kernel = self.add_variable("kernel", shape=[input_shape[-1].value, self.num_outputs])
-
-    def call(self, inputs):
-        return tf.matmul(inputs, self.kernel)
+logs = tf.keras.callbacks.TensorBoard(log_dir="logs/")
 
 # Create convolve model
-
 
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Conv2D(32, input_shape=input_shape, kernel_size=(3, 3), padding='same', activation='relu'))
@@ -41,11 +38,11 @@ model.add(tf.keras.layers.Dropout(0.25))
 model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(128, activation='relu'))
 model.add(tf.keras.layers.Dropout(0.25))
-model.add(MyDenseLayer(50))
 model.add(tf.keras.layers.Dense(10, activation='softmax'))
 
 model.compile(optimizer=tf.keras.optimizers.SGD(lr=0.01),
               loss=tf.keras.losses.mean_squared_error,
               metrics=['accuracy'])
 
-model.fit(x_train, y_train, batch_size=100, epochs=100)
+model.fit(x_train, y_train, batch_size=100, epochs=100, callbacks=[logs])
+
