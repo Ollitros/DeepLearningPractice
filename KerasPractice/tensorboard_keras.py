@@ -44,5 +44,11 @@ model.compile(optimizer=tf.keras.optimizers.SGD(lr=0.01),
               loss=tf.keras.losses.mean_squared_error,
               metrics=['accuracy'])
 
-model.fit(x_train, y_train, batch_size=100, epochs=100, callbacks=[logs])
+model.fit(x_train, y_train, batch_size=100, epochs=1, callbacks=[logs])
+
+print(model.inputs)
+print(model.outputs)
+print(model.get_config())
+print(model.summary())
+print(model.layers)
 
