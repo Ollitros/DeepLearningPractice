@@ -13,6 +13,8 @@ with tf.device('/device:GPU:0'):
 # [PATH_TO_LOGDIR] - without ' or ", + add '/'
 # FOR EXAMPLE: "python -m tensorboard.main --logdir=logs/"
 # where 'logs/' - is your directory where your log file placed from writer or smth else
+# ERRORS: 1) tensorboard shows no graph -> try to insert writer code somewhere else near the session part
+#            or after initialization of all variables
 ###
 
 writer = tf.summary.FileWriter('logs')
