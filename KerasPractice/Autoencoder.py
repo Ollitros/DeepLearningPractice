@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from keras import layers,  backend
+from tensorflow.keras import layers,  backend
 import tensorflow as tf
-from keras.layers import Conv2D, MaxPooling2D
-from keras import models, utils, optimizers, datasets
+from tensorflow.keras.layers import Conv2D, MaxPooling2D
+from tensorflow.keras import models, utils, optimizers, datasets
 
 from sklearn.preprocessing import MinMaxScaler
 
